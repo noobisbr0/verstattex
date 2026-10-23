@@ -4,60 +4,60 @@
 
 \subsection{Неравенство Маркова}
 \begin{theorem}[Неравенство Маркова]
-Пусть $X \ge 0$ — неотрицательная дискретная случайная величина с конечным математическим ожиданием $E(X)$. Тогда для любого положительного числа $\varepsilon > 0$:
-$$P(X \ge \varepsilon) \le \frac{E(X)}{\varepsilon}.$$
+Пусть $X \ge 0$ — неотрицательная дискретная случайная величина с конечным математическим ожиданием $\E[X]$. Тогда для любого положительного числа $\varepsilon > 0$:
+$$\Prob(X \ge \varepsilon) \le \frac{\E[X]}{\varepsilon}.$$
 \end{theorem}
 
 \begin{proof}
 Запишем определение математического ожидания для дискретной случайной величины. Так как $X \ge 0$, все ее значения $x_i \ge 0$.
 Разделим сумму на две части: значения, которые меньше $\varepsilon$, и значения, которые больше или равны $\varepsilon$.
-$$E(X) = \sum_{x_i < \varepsilon} x_i P(X = x_i) + \sum_{x_i \ge \varepsilon} x_i P(X = x_i).$$
+$$\E[X] = \sum_{x_i < \varepsilon} x_i \Prob(X = x_i) + \sum_{x_i \ge \varepsilon} x_i \Prob(X = x_i).$$
 Первая сумма неотрицательна. Если мы ее отбросим, мы только уменьшим общее выражение:
-$$E(X) \ge \sum_{x_i \ge \varepsilon} x_i P(X = x_i).$$
+$$\E[X] \ge \sum_{x_i \ge \varepsilon} x_i \Prob(X = x_i).$$
 В оставшейся сумме каждый элемент $x_i \ge \varepsilon$. Если мы заменим каждый $x_i$ на меньшее число $\varepsilon$, сумма снова уменьшится:
-$$E(X) \ge \varepsilon \sum_{x_i \ge \varepsilon} P(X = x_i) = \varepsilon \cdot P(X \ge \varepsilon).$$
-Разделив обе части на $\varepsilon > 0$, получаем искомое неравенство: $P(X \ge \varepsilon) \le \frac{E(X)}{\varepsilon}$.
+$$\E[X] \ge \varepsilon \sum_{x_i \ge \varepsilon} \Prob(X = x_i) = \varepsilon \cdot \Prob(X \ge \varepsilon).$$
+Разделив обе части на $\varepsilon > 0$, получаем искомое неравенство: $\Prob(X \ge \varepsilon) \le \frac{\E[X]}{\varepsilon}$.
 \end{proof}
 
 \subsection{Неравенство Чебышева}
 \begin{theorem}[Неравенство Чебышева]
-Для любой случайной величины $X$ с конечными математическим ожиданием $\mu = E(X)$ и дисперсией $D(X)$, для любого $\varepsilon > 0$ справедливо:
-$$P(\vert{}X - \mu\vert{} \ge \varepsilon) \le \frac{D(X)}{\varepsilon^2}.$$
+Для любой случайной величины $X$ с конечными математическим ожиданием $\mu = \E[X]$ и дисперсией $\Var[X]$, для любого $\varepsilon > 0$ справедливо:
+$$\Prob(\vert{}X - \mu\vert{} \ge \varepsilon) \le \frac{\Var[X]}{\varepsilon^2}.$$
 \end{theorem}
 
 \begin{proof}
-Рассмотрим новую случайную величину $Y = (X - \mu)^2$. Эта величина неотрицательна, а ее математическое ожидание по определению равно дисперсии: $E(Y) = D(X)$.
+Рассмотрим новую случайную величину $Y = (X - \mu)^2$. Эта величина неотрицательна, а ее математическое ожидание по определению равно дисперсии: $\E[Y] = \Var[X]$.
 Событие $\vert{}X - \mu\vert{} \ge \varepsilon$ эквивалентно событию $(X - \mu)^2 \ge \varepsilon^2$, то есть $Y \ge \varepsilon^2$.
 Применим доказанное ранее неравенство Маркова для величины $Y$ и константы $\varepsilon^2$:
-$$P(Y \ge \varepsilon^2) \le \frac{E(Y)}{\varepsilon^2} \implies P(\vert{}X - \mu\vert{} \ge \varepsilon) \le \frac{D(X)}{\varepsilon^2}.$$
+$$\Prob(Y \ge \varepsilon^2) \le \frac{\E[Y]}{\varepsilon^2} \implies \Prob(\vert{}X - \mu\vert{} \ge \varepsilon) \le \frac{\Var[X]}{\varepsilon^2}.$$
 \end{proof}
 
 \subsection{Схема Бернулли и Биномиальное распределение}
 Число успехов $S_n$ в $n$ независимых испытаниях Бернулли подчиняется биномиальному закону с вероятностью:
-$$P(S_n = k) = C_n^k p^k q^{n-k}.$$
+$$\Prob(S_n = k) = C_n^k p^k q^{n-k}.$$
 Ее основные числовые характеристики (математическое ожидание и дисперсия) выражаются формулами:
-$$E(S_n) = n p, \quad D(S_n) = n p q.$$
+$$\E[S_n] = n p, \quad \Var[S_n] = n p q.$$
 
 \subsection{Законы больших чисел}
 
 \begin{theorem}[Закон больших чисел в форме Бернулли]
 Относительная частота $\frac{S_n}{n}$ сходится по вероятности к вероятности успеха $p$:
-$$P\left(\left\vert\frac{S_n}{n} - p\right\vert \ge \varepsilon\right) \le \frac{p q}{n \varepsilon^2} \xrightarrow[n \to \infty]{} 0.$$
+$$\Prob\left(\left\vert\frac{S_n}{n} - p\right\vert \ge \varepsilon\right) \le \frac{p q}{n \varepsilon^2} \xrightarrow[n \to \infty]{} 0.$$
 \end{theorem}
 
 \begin{theorem}[Теорема Чебышева]
-Пусть $X_1, X_2, \dots, X_n$ — последовательность попарно независимых случайных величин с математическими ожиданиями $E(X_i) = \mu_i$ и ограниченными дисперсиями $D(X_i) \le C$. Тогда среднее арифметическое этих величин сходится по вероятности к среднему их математических ожиданий:
-$$\lim_{n \to \infty} P\left(\left\vert{}\frac{1}{n}\sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \mu_i\right\vert{} \ge \varepsilon\right) = 0.$$
+Пусть $X_1, X_2, \dots, X_n$ — последовательность попарно независимых случайных величин с математическими ожиданиями $\E[X_i] = \mu_i$ и ограниченными дисперсиями $\Var[X_i] \le C$. Тогда среднее арифметическое этих величин сходится по вероятности к среднему их математических ожиданий:
+$$\lim_{n \to \infty} \Prob\left(\left\vert{}\frac{1}{n}\sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \mu_i\right\vert{} \ge \varepsilon\right) = 0.$$
 \end{theorem}
 
 \begin{proof}
 Рассмотрим случайную величину $Z_n = \frac{1}{n}\sum_{i=1}^n X_i$.
-По свойствам линейности (см. Теорему \ref{thm:ev_properties} на стр. \pageref{thm:ev_properties}), ее математическое ожидание равно $E(Z_n) = \frac{1}{n}\sum_{i=1}^n \mu_i$.
+По свойствам линейности (см. Теорему \ref{thm:ev_properties} на стр. \pageref{thm:ev_properties}), ее математическое ожидание равно $\E[Z_n] = \frac{1}{n}\sum_{i=1}^n \mu_i$.
 Поскольку $X_i$ независимы, дисперсия суммы равна сумме дисперсий (согласно Теореме \ref{thm:var_properties}):
-$$D(Z_n) = D\left(\frac{1}{n}\sum_{i=1}^n X_i\right) = \frac{1}{n^2} \sum_{i=1}^n D(X_i).$$
+$$\Var[Z_n] = \Var\left[\frac{1}{n}\sum_{i=1}^n X_i\right] = \frac{1}{n^2} \sum_{i=1}^n \Var[X_i].$$
 Так как каждая дисперсия ограничена константой $C$, то:
-$$D(Z_n) \le \frac{1}{n^2} \sum_{i=1}^n C = \frac{1}{n^2} (n \cdot C) = \frac{C}{n}.$$
+$$\Var[Z_n] \le \frac{1}{n^2} \sum_{i=1}^n C = \frac{1}{n^2} (n \cdot C) = \frac{C}{n}.$$
 Применим неравенство Чебышева к величине $Z_n$:
-$$P(\vert{}Z_n - E(Z_n)\vert{} \ge \varepsilon) \le \frac{D(Z_n)}{\varepsilon^2} \le \frac{C}{n \varepsilon^2}.$$
+$$\Prob(\vert{}Z_n - \E[Z_n]\vert{} \ge \varepsilon) \le \frac{\Var[Z_n]}{\varepsilon^2} \le \frac{C}{n \varepsilon^2}.$$
 При стремлении $n \to \infty$ правая часть стремится к нулю. Следовательно, вероятность отклонения от математического ожидания тоже стремится к нулю.
 \end{proof}

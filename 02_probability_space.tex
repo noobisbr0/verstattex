@@ -26,11 +26,11 @@ $$C_n^k = \frac{n!}{k!(n-k)!}.$$
 1. Число всех исходов $\vert{}\Omega\vert{} = n$ конечно.
 2. Все исходы равновозможны (симметрия эксперимента).
 То вероятность наступления события $A$, состоящего из $m$ исходов, определяется как отношение:
-$$P(A) = \frac{\vert{}A\vert{}}{\vert{}\Omega\vert{}} = \frac{m}{n}.$$
+$$\Prob(A) = \frac{\vert{}A\vert{}}{\vert{}\Omega\vert{}} = \frac{m}{n}.$$
 
 \begin{example}[Примеры классической вероятности]
 1. \textbf{Бросание монет:} При подбрасывании трех монет $\Omega = \{OOO, OOP, OPO, OPP, POO, POP, PPO, PPP\}$, всего $\vert{}\Omega\vert{} = 8$. Пусть событие $A$ — выпадение ровно одного орла: $A = \{OPP, POP, PPO\}$, $\vert{}A\vert{} = 3$.
-$$P(A) = \frac{3}{8} = 0{,}375.$$
+$$\Prob(A) = \frac{3}{8} = 0{,}375.$$
 
 2. \textbf{Бросание двух игральных костей:} Всего исходов $\vert{}\Omega\vert{} = 6 \times 6 = 36$. Распределение суммы выпавших очков $X$:
 \begin{center}
@@ -39,7 +39,7 @@ $$P(A) = \frac{3}{8} = 0{,}375.$$
 Сумма $X$ & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
 \midrule
 Исходов & 1 & 2 & 3 & 4 & 5 & 6 & 5 & 4 & 3 & 2 & 1 \\
-$P(X)$ & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ & $\frac{5}{36}$ & $\frac{6}{36}$ & $\frac{5}{36}$ & $\frac{4}{36}$ & $\frac{3}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ \\
+$\Prob(X)$ & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ & $\frac{5}{36}$ & $\frac{6}{36}$ & $\frac{5}{36}$ & $\frac{4}{36}$ & $\frac{3}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -96,41 +96,41 @@ $P(X)$ & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ & $\f
 
 \begin{theorem}[Теорема сложения для несовместных событий]
 Если события $A$ и $B$ не могут наступить одновременно ($A \cap B = \varnothing$), то:
-$$P(A \cup B) = P(A) + P(B).$$
+$$\Prob(A \cup B) = \Prob(A) + \Prob(B).$$
 \end{theorem}
 
 \begin{proof}
 Пусть общее число исходов равно $n$. Событию $A$ благоприятствует $m_A$ исходов, событию $B$ — $m_B$ исходов. Поскольку $A$ и $B$ не пересекаются, событию $A \cup B$ благоприятствует ровно $m_A + m_B$ исходов.
-$$P(A \cup B) = \frac{m_A + m_B}{n} = \frac{m_A}{n} + \frac{m_B}{n} = P(A) + P(B).$$
+$$\Prob(A \cup B) = \frac{m_A + m_B}{n} = \frac{m_A}{n} + \frac{m_B}{n} = \Prob(A) + \Prob(B).$$
 \end{proof}
 
 \begin{theorem}[Общая теорема сложения вероятностей]
 Для любых двух событий $A$ и $B$:
-$$P(A \cup B) = P(A) + P(B) - P(A \cap B).$$
+$$\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B).$$
 \end{theorem}
 
 \begin{proof}
 Представим событие $A \cup B$ как объединение несовместных событий: $A \cup B = A \cup (B \setminus A)$.
 Применим теорему сложения для несовместных событий:
-$$P(A \cup B) = P(A) + P(B \setminus A). \quad (1)$$
+$$\Prob(A \cup B) = \Prob(A) + \Prob(B \setminus A). \quad (1)$$
 Само событие $B$ можно разбить на две несовместные части: $B = (B \setminus A) \cup (A \cap B)$.
-$$P(B) = P(B \setminus A) + P(A \cap B) \implies P(B \setminus A) = P(B) - P(A \cap B).$$
-Подставим полученное выражение для $P(B \setminus A)$ в уравнение (1):
-$$P(A \cup B) = P(A) + P(B) - P(A \cap B).$$
+$$\Prob(B) = \Prob(B \setminus A) + \Prob(A \cap B) \implies \Prob(B \setminus A) = \Prob(B) - \Prob(A \cap B).$$
+Подставим полученное выражение для $\Prob(B \setminus A)$ в уравнение (1):
+$$\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B).$$
 Теорема доказана.
 \end{proof}
 
 \begin{theorem}[Формула включений-исключений для 3 событий]
-$$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C).$$
+$$\Prob(A \cup B \cup C) = \Prob(A) + \Prob(B) + \Prob(C) - \Prob(A \cap B) - \Prob(A \cap C) - \Prob(B \cap C) + \Prob(A \cap B \cap C).$$
 \end{theorem}
 
 \begin{proof}
 Обозначим $D = A \cup B$. Тогда $A \cup B \cup C = D \cup C$. Применим общую теорему сложения:
-$$P(D \cup C) = P(D) + P(C) - P(D \cap C).$$
-Раскроем $P(D)$: $P(D) = P(A \cup B) = P(A) + P(B) - P(A \cap B)$. \\
-Теперь раскроем $P(D \cap C)$:
+$$\Prob(D \cup C) = \Prob(D) + \Prob(C) - \Prob(D \cap C).$$
+Раскроем $\Prob(D)$: $\Prob(D) = \Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B)$. \\
+Теперь раскроем $\Prob(D \cap C)$:
 $$D \cap C = (A \cup B) \cap C = (A \cap C) \cup (B \cap C).$$
 Вероятность этого объединения:
-$$P((A \cap C) \cup (B \cap C)) = P(A \cap C) + P(B \cap C) - P(A \cap B \cap C).$$
+$$\Prob((A \cap C) \cup (B \cap C)) = \Prob(A \cap C) + \Prob(B \cap C) - \Prob(A \cap B \cap C).$$
 Собираем все воедино и получаем требуемую формулу.
 \end{proof}
