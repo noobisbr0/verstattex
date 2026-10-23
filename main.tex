@@ -67,6 +67,7 @@ urlcolor=blue!70!black
 
 % --- Цветные выносные блоки (tcolorbox) ---
 \tcolorboxenvironment{theorem}{
+  breakable,
   enhanced,
   boxrule=0pt,
   leftrule=3.5pt,
@@ -80,10 +81,10 @@ urlcolor=blue!70!black
   right=8pt,
   top=6pt,
   bottom=6pt,
-  breakable
 }
 
 \tcolorboxenvironment{definition}{
+  breakable,
   enhanced,
   boxrule=0pt,
   leftrule=3.5pt,
@@ -96,11 +97,11 @@ urlcolor=blue!70!black
   left=8pt,
   right=8pt,
   top=6pt,
-  bottom=6pt,
-  breakable
+  bottom=6pt
 }
 
 \tcolorboxenvironment{example}{
+  breakable,
   enhanced,
   boxrule=0pt,
   leftrule=3.5pt,
@@ -113,8 +114,7 @@ urlcolor=blue!70!black
   left=8pt,
   right=8pt,
   top=6pt,
-  bottom=6pt,
-  breakable
+  bottom=6pt
 }
 
 \tcolorboxenvironment{property}{
