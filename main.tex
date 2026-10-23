@@ -1,0 +1,76 @@
+%!TEX program = pdflatex
+
+\documentclass[12pt,a4paper]{article}
+
+% --- Универсальная настройка движков ---
+\usepackage{iftex}
+
+\ifPDFTeX
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\else
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\fi
+
+% --- Математические пакеты ---
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{icomma}
+
+% --- Верстка, таблицы и графика ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=blue!70!black,
+citecolor=blue!70!black,
+urlcolor=blue!70!black
+}
+
+% --- Определение математических операторов ---
+\DeclareMathOperator{\Cov}{Cov}
+
+% --- Окружения теорем ---
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{definition}{Определение}[section]
+\newtheorem{property}{Свойство}[section]
+\newtheorem{example}{Пример}[section]
+\newtheorem{lemma}{Лемма}[section]
+
+\title{\textbf{Конспект лекций: Теория вероятностей и математическая статистика}\ \large (Оцифрованная и дополненная версия)}
+\author{Оцифровано по материалам лекционных тетрадей}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Данный документ представляет собой подробную оцифровку лекционных записей по курсу «Теория вероятностей и математическая статистика». В конспект включены ключевые темы, а также подробные алгебраические и комбинаторные доказательства всех основных фактов и теорем. Все доказательства построены на базе дискретных структур и суммирования, что позволяет глубоко понять суть вероятностных процессов без обращения к математическому анализу непрерывных функций.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{01_graph_theory.tex}
+\input{02_probability_space.tex}
+\input{03_conditional_probability.tex}
+\input{04_total_prob_bayes.tex}
+\input{05_discrete_rv.tex}
+\input{06_2d_rv_correlation.tex}
+\input{07_limit_theorems.tex}
+
+\end{document}

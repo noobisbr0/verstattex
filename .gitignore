@@ -1,0 +1,30 @@
+Временные файлы LaTeX
+
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.log
+*.synctex.gz
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+repomix-output.xml
+.repomixignore
+
+Артефакты редакторов и ОС
+
+.DS_Store
+.vscode/
+*.swp
+*.pdf
