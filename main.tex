@@ -27,9 +27,11 @@
 \usepackage{booktabs}
 \usepackage{geometry}
 \usepackage{tikz}
-\usetikzlibrary{shapes, intersections, trees, positioning}
+\usetikzlibrary{shapes, intersections, trees, positioning, arrows.meta}
 \usepackage{xcolor}
 \usepackage{microtype}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins, breakable}
 \usepackage{hyperref}
 \usepackage[russian,nameinlink,capitalize]{cleveref}
 
@@ -56,12 +58,98 @@ urlcolor=blue!70!black
   tree node/.style={align=center, fill=white, inner sep=2pt}
 }
 
-% --- Окружения теорем ---
+% --- Базовые окружения теорем ---
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{definition}{Определение}[section]
 \newtheorem{property}{Свойство}[section]
 \newtheorem{example}{Пример}[section]
 \newtheorem{lemma}{Лемма}[section]
+
+% --- Цветные выносные блоки (tcolorbox) ---
+\tcolorboxenvironment{theorem}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colback=blue!4!white,
+  colframe=blue!65!black,
+  sharp corners,
+  rounded corners=southeast,
+  arc=2pt,
+  boxsep=2pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  breakable
+}
+
+\tcolorboxenvironment{definition}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colback=teal!4!white,
+  colframe=teal!60!black,
+  sharp corners,
+  rounded corners=southeast,
+  arc=2pt,
+  boxsep=2pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  breakable
+}
+
+\tcolorboxenvironment{example}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colback=orange!4!white,
+  colframe=orange!75!black,
+  sharp corners,
+  rounded corners=southeast,
+  arc=2pt,
+  boxsep=2pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  breakable
+}
+
+\tcolorboxenvironment{property}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colback=purple!4!white,
+  colframe=purple!60!black,
+  sharp corners,
+  rounded corners=southeast,
+  arc=2pt,
+  boxsep=2pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  breakable
+}
+
+\tcolorboxenvironment{lemma}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colback=blue!2!gray!3!white,
+  colframe=gray!60!black,
+  sharp corners,
+  rounded corners=southeast,
+  arc=2pt,
+  boxsep=2pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  breakable
+}
 
 \title{\textbf{Конспект лекций: Теория вероятностей и математическая статистика}\\ \large (Оцифрованная и дополненная версия)}
 \author{Оцифровано по материалам лекционных тетрадей}
@@ -72,7 +160,7 @@ urlcolor=blue!70!black
 \maketitle
 
 \begin{abstract}
-Данный документ представляет собой подробную оцифровку лекционных записей по курсу «Теория вероятностей и математическая статистика». В конспект включены ключевые темы, а также подробные алгебраические и комбинаторные доказательства всех основных фактов и теорем. Конспект расширен визуализациями и наглядными примерами.
+Данный документ представляет собой подробную оцифровку лекционных записей по курсу «Теория вероятностей и математическая статистика». В конспект включены ключевые темы, а также подробные алгебраические и комбинаторные доказательства всех основных фактов и теорем. Конспект расширен современными визуализациями, цветными блоками теорем и наглядными примерами.
 \end{abstract}
 
 \tableofcontents
