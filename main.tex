@@ -19,7 +19,7 @@
 \fi
 
 % --- Математические пакеты ---
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools,amssymb,amsthm}
 \usepackage{icomma}
 
 % --- Верстка, таблицы и графика ---
@@ -31,6 +31,7 @@
 \usepackage{xcolor}
 \usepackage{microtype}
 \usepackage{hyperref}
+\usepackage[russian,nameinlink,capitalize]{cleveref}
 
 \geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
 
@@ -42,7 +43,18 @@ urlcolor=blue!70!black
 }
 
 % --- Определение математических операторов ---
+\providecommand{\Prob}{}
+\renewcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{D}}
 \DeclareMathOperator{\Cov}{Cov}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+% --- Глобальные стили TikZ ---
+\tikzset{
+  graph vertex/.style={circle, fill=black, inner sep=2pt},
+  tree node/.style={align=center, fill=white, inner sep=2pt}
+}
 
 % --- Окружения теорем ---
 \newtheorem{theorem}{Теорема}[section]
@@ -54,10 +66,6 @@ urlcolor=blue!70!black
 \title{\textbf{Конспект лекций: Теория вероятностей и математическая статистика}\\ \large (Оцифрованная и дополненная версия)}
 \author{Оцифровано по материалам лекционных тетрадей}
 \date{\today}
-
-\renewcommand{\Prob}{\mathbb{P}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\Var}{\mathbb{D}}
 
 \begin{document}
 
