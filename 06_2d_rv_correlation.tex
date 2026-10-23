@@ -10,16 +10,13 @@ $$E(X + Y) = E(X) + E(Y).$$
 \end{theorem}
 
 \begin{proof}
-По определению математического ожидания функции от двумерной случайной величины, мы должны просуммировать значения суммы $(x_i + y_j)$ по всем возможным исходам с их вероятностями $p_{ij}$:
+По определению математического ожидания функции от двумерной случайной величины:
 \begin{align*}
 E(X + Y) &= \sum_{i} \sum_{j} (x_i + y_j) p_{ij} = \sum_{i} \sum_{j} (x_i p_{ij} + y_j p_{ij}) \\
-&= \sum_{i} \sum_{j} x_i p_{ij} + \sum_{i} \sum_{j} y_j p_{ij}.
+&= \sum_{i} x_i \left( \sum_{j} p_{ij} \right) + \sum_{j} y_j \left( \sum_{i} p_{ij} \right).
 \end{align*}
-В первой двойной сумме вынесем $x_i$ (оно не зависит от индекса $j$), а во второй вынесем $y_j$ (не зависит от $i$):
-$$E(X + Y) = \sum_{i} x_i \left( \sum_{j} p_{ij} \right) + \sum_{j} y_j \left( \sum_{i} p_{ij} \right).$$
 Заметим, что суммирование совместной вероятности $p_{ij}$ по всем $j$ дает маргинальную (одномерную) вероятность $P(X = x_i)$. Аналогично, сумма по $i$ дает $P(Y = y_j)$:
 $$E(X + Y) = \sum_{i} x_i P(X = x_i) + \sum_{j} y_j P(Y = y_j) = E(X) + E(Y).$$
-Теорема доказана.
 \end{proof}
 
 \begin{theorem}[Математическое ожидание произведения независимых СВ]
@@ -28,8 +25,6 @@ $$E(X + Y) = \sum_{i} x_i P(X = x_i) + \sum_{j} y_j P(Y = y_j) = E(X) + E(Y).$$
 
 \begin{proof}
 Если $X$ и $Y$ независимы, то вероятность совместного наступления равна произведению вероятностей: $p_{ij} = P(X = x_i) \cdot P(Y = y_j)$.
-$$E(XY) = \sum_i \sum_j (x_i y_j) p_{ij} = \sum_i \sum_j (x_i y_j) P(X = x_i) P(Y = y_j).$$
-Сгруппируем члены, зависящие от $i$ и от $j$:
 $$E(XY) = \left( \sum_i x_i P(X = x_i) \right) \cdot \left( \sum_j y_j P(Y = y_j) \right) = E(X) \cdot E(Y).$$
 \end{proof}
 
@@ -47,32 +42,41 @@ $$\Cov(X, Y) = E\left((X - E(X))(Y - E(Y))\right).$$
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}
-\begin{enumerate}
-\item Пусть $\mu_X = E(X)$ и $\mu_Y = E(Y)$. Раскроем скобки:
-\begin{align*}
-\Cov(X,Y) &= E((X - \mu_X)(Y - \mu_Y)) = E(XY - X\mu_Y - Y\mu_X + \mu_X\mu_Y) \\
-&= E(XY) - \mu_Y E(X) - \mu_X E(Y) + \mu_X\mu_Y \\
-&= E(XY) - \mu_Y\mu_X - \mu_X\mu_Y + \mu_X\mu_Y = E(XY) - \mu_X\mu_Y = E(XY) - E(X)E(Y).
-\end{align*}
-
-\item Если $X$ и $Y$ независимы, то по доказанной выше теореме $E(XY) = E(X)E(Y)$.
-Подставляем это в формулу: $\Cov(X,Y) = E(X)E(Y) - E(X)E(Y) = 0$.
-\end{enumerate}
-\end{proof}
-
 \begin{theorem}[Дисперсия суммы]
 $D(X + Y) = D(X) + D(Y) + 2\,\Cov(X, Y)$.
 \end{theorem}
 
-\begin{proof}
-По определению дисперсии: $D(X+Y) = E\left( ((X+Y) - E(X+Y))^2 \right)$.
-Перегруппируем слагаемые:
-$$D(X+Y) = E\left( ((X - E(X)) + (Y - E(Y)))^2 \right).$$
-Возведем в квадрат по формуле $(a+b)^2 = a^2 + 2ab + b^2$:
-\begin{align*}
-D(X+Y) &= E\left( (X - E(X))^2 + 2(X - E(X))(Y - E(Y)) + (Y - E(Y))^2 \right) \\
-&= E\left((X - E(X))^2\right) + 2E\left((X - E(X))(Y - E(Y))\right) + E\left((Y - E(Y))^2\right) \\
-&= D(X) + 2\Cov(X, Y) + D(Y).
-\end{align*}
-\end{proof}
+\begin{definition}
+\textbf{Коэффициентом корреляции} $r_{XY}$ называется нормированная ковариация:
+$$r_{XY} = \frac{\Cov(X, Y)}{\sigma_X \sigma_Y}.$$
+Свойства:
+1. $-1 \le r_{XY} \le 1$.
+2. $\vert{}r_{XY}\vert{} = 1 \iff Y = aX + b$ (строгая линейная связь).
+3. Если $X$ и $Y$ независимы, то $r_{XY} = 0$.
+\end{definition}
+
+\begin{example}[Расчет ковариации на основе матрицы]
+Двумерная случайная величина $(X,Y)$ задана матрицей распределения. Найдем ковариацию.
+\begin{center}
+\begin{tabular}{c|cc|c}
+\toprule
+$X \setminus Y$ & $Y=0$ & $Y=1$ & $P(X=x_i)$ \\
+\midrule
+$X=1$ & $0{,}2$ & $0{,}3$ & $0{,}5$ \\
+$X=2$ & $0{,}4$ & $0{,}1$ & $0{,}5$ \\
+\midrule
+$P(Y=y_j)$ & $0{,}6$ & $0{,}4$ & $1{,}0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Решение:}
+1. Найдем маргинальные математические ожидания $X$ и $Y$:
+$$E(X) = 1 \cdot 0{,}5 + 2 \cdot 0{,}5 = 0{,}5 + 1 = 1{,}5.$$
+$$E(Y) = 0 \cdot 0{,}6 + 1 \cdot 0{,}4 = 0{,}4.$$
+2. Найдем математическое ожидание произведения $E(XY)$:
+$$E(XY) = \sum \sum x_i y_j p_{ij} = 1\cdot 0\cdot 0{,}2 + 1\cdot 1\cdot 0{,}3 + 2\cdot 0\cdot 0{,}4 + 2\cdot 1\cdot 0{,}1 = 0{,}3 + 0{,}2 = 0{,}5.$$
+3. Вычислим ковариацию:
+$$\Cov(X, Y) = E(XY) - E(X)E(Y) = 0{,}5 - 1{,}5 \cdot 0{,}4 = 0{,}5 - 0{,}6 = -0{,}1.$$
+Отрицательная ковариация указывает на наличие обратной линейной зависимости между $X$ и $Y$ (с ростом $X$ значения $Y$ имеют тенденцию к снижению).
+\end{example}
